@@ -36,6 +36,18 @@ public class UF {
 
     public void union(int p, int q) {
         // TODO: Students implement this method
+        int rootp = find(p);
+        int rootq = find(q);
+        if (rank[rootp] < rank[rootq]) {
+            parent[rootp] = rootq;
+        } else if (rank[rootq] < rank[p]) {
+            parent[rootq] = rootp;
+        } else {
+            parent[rootq] = rootp;
+            rank[rootp]+=1;
+        }
+        this.count-=1;
+
     }
 
     private void validate(int p) {
